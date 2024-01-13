@@ -1,9 +1,17 @@
 import React from 'react'
 
-function page() {
+type Props = {
+  params: {
+      city: string;
+      lat: string; 
+      long: string;
+  }
+}
+
+function WeatherPage({params: {city, lat, long} }: Props) {
   return (
-    <div>page</div>
+    <div>Welcome to the weather page; {city} {lat} {long} </div>
   )
 }
 
-export default page
+export default WeatherPage
