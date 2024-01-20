@@ -1,10 +1,10 @@
 "use client";
 
-import { Country, City } from "country-state-city"
-import { useState } from "react";
-import Select from "react-select"
+import { Country, City } from "country-state-city";
 import { useRouter } from "next/navigation";
-import { GlobeIcon } from "@heroicons/react/solid"
+import { useState } from "react";
+import Select from "react-select";
+import { GlobeIcon } from "@heroicons/react/solid";
 
 type option = {
   value: {
@@ -43,16 +43,18 @@ function CityPicker() {
   const handleSelectedCountry = (option: option) => {
     setSelectedCountry(option);
     setSelectedCity(null);
-  }
+  };
 
   const handleSelectedCity = (option: cityOption) => {
-    setSelectedCity(option); 
-    router.push(`/location/${option?.value.name}/${option?.value.latitude}/${option?.value.longitude}`)
-  }
+    setSelectedCity(option);
+    router.push(
+      `/location/${option?.value.name}/${option?.value.latitude}/${option?.value.longitude}`
+    );
+  };
 
   return (
     <div className="space-y-4">
-      <div className="space-y-2" >
+      <div className="space-y-2">
         <div className="flex items-center space-x-2 text-white/80">
           <GlobeIcon className="h-5 w-5 text-white" />
           <label htmlFor="country">Country</label>
@@ -61,11 +63,12 @@ function CityPicker() {
           className="text-black"
           value={selectedCountry}
           onChange={handleSelectedCountry}
-          options={options} />
+          options={options}
+        />
       </div>
 
       {selectedCountry && (
-        <div className="space-y-2" >
+        <div className="space-y-2">
           <div className="flex items-center space-x-2 text-white/80">
             <GlobeIcon className="h-5 w-5 text-white" />
             <label htmlFor="country">City</label>
@@ -86,11 +89,11 @@ function CityPicker() {
               },
               label: state.name,
             }))}
-            />
+          />
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default CityPicker;
